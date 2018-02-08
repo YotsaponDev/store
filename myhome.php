@@ -66,7 +66,7 @@
   <h3>THE BOSS</h3>
   <p><em>We love Coffee</em></p>
   <br>
-  <table>
+  <table align = left>
   <tr>
     <th>เมนู</th>
     <th>จำนวน</th>
@@ -100,6 +100,83 @@
     <td></td>
     <td></td>
     <td></td>
+  </tr>
+  <tr>
+  <?php
+//1. เชื่อมต่อ database: 
+
+//2. query ข้อมูลจากตาราง tb_member: 
+$query = "SELECT * FROM login" or die("Error:" . mysqli_error()); 
+//3.เก็บข้อมูลที่ query ออกมาไว้ในตัวแปร result . 
+$result = mysqli_query($con, $query); 
+//4 . แสดงข้อมูลที่ query ออกมา โดยใช้ตารางในการจัดข้อมูล: 
+ 
+echo "<table border='1' align='center' width='500'>";
+//หัวข้อตาราง
+echo "<tr align='center' bgcolor='#CCCCCC'><td>รหัส</td><td>Uername
+</td><td>ชื่อ</td><td>นามสกุล</td><td>อีเมล์</td><td>แก้ไข</td><td>ลบ</td></tr>";
+while($row = mysqli_fetch_array($result)) { 
+  echo "<tr>";
+  echo "<td>" .$row["id"] .  "</td> "; 
+  echo "<td>" .$row["username"] .  "</td> ";  
+  echo "<td>" .$row["password"] .  "</td> ";
+}
+echo "</table>";
+//5. close connection
+mysqli_close($con);
+ ?> 
+
+ <!--
+<script>
+function getDataFromDb()
+{
+$.ajax({
+url: "dbcon.php" ,
+type: "POST",
+data: ''
+})
+.success(function(result) {
+var obj = jQuery.parseJSON(result);
+if(obj != '')
+{
+//$("#myTable tbody tr:not(:first-child)").remove();
+$("#login").empty();
+$.each(obj, function(key, val) {
+var tr = "<tr>";
+tr = tr + "<td>" + val["id"] + "</td>";
+tr = tr + "<td>" + val["username"] + "</td>";
+tr = tr + "<td>" + val["password"] + "</td>";
+tr = tr + "</tr>";
+$('#myTable > tbody:last').append(tr);
+});
+}
+ 
+});
+}
+setInterval(getDataFromDb, 10000);   // 1000 = 1 second.
+</script>
+</head>
+<body>
+<center>
+<h1>My Web</h1>
+<table width="600" border="1" id="myTable">
+//head table
+<!--
+<thead>
+<tr>
+<td width="91"> <div align="center">CustomerID </div></td>
+<td width="98"> <div align="center">Name </div></td>
+<td width="198"> <div align="center">Email </div></td>
+<td width="97"> <div align="center">CountryCode </div></td>
+<td width="59"> <div align="center">Budget </div></td>
+<td width="71"> <div align="center">Used </div></td>
+</tr>
+</thead>
+// body dynamic rows
+<tbody id="myBody"></tbody>
+</table>
+ -->
+
   </tr>
 
 </table>
