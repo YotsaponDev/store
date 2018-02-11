@@ -66,6 +66,7 @@
   <h3>THE BOSS</h3>
   <p><em>We love Coffee</em></p>
   <br>
+  <form method="post" action="order.php">
   <table align = left>
   <tr>
     <th>เมนู</th>
@@ -74,33 +75,35 @@
     <th>ร้อน/เย็น/ปั่น</th>
   </tr>
   <tr>
-    <td>กาแฟ</td>
-    <td><select name="value">
+    <td><select name="menu" id = "menu">
+    <option value="1">กาแฟ</option>
+    <option value="2">นมสด</option>
+    <option value="3">โอวัลติน</option>
+    <option value="4">มอคค่า</option>
+    <option value="5">ไมโล</option>
+  </select></td>
+    <td><select name="value" id = "value">
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
     <option value="4">4</option>
     <option value="5">5</option>
   </select></td>
-    <td><select name="change">
+    <td><select name="flavor" id = "flavor">
     <option value="1">ปกติ</option>
     <option value="2">เพิ่มน้ำตาล</option>
     <option value="3">หวานน้อย</option>
     <option value="4">กาแฟดำ</option>
     <option value="5">ไม่ใส่คอฟฟี่เมท</option>
   </select></td>
-    <td><select name="type">
+    <td><select name="temp" id = "temp">
     <option value="1">ร้อน</option>
     <option value="2">เย็น</option>
     <option value="3">ปั่น</option>
   </select></td>
   </tr>
-  <tr>
-    <td>โอวัลตีน</td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
+<input type="submit" name="Submit" value="สั่ง">
+  </form>
   <tr>
   <?php
 //1. เชื่อมต่อ database: 
